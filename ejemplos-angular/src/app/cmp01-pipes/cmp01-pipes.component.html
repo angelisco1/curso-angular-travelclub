@@ -1,0 +1,26 @@
+<h2>Pipes</h2>
+
+<button (click)="cuenta = cuenta + 1">{{cuenta}}</button>
+
+<div>
+  <h3>{{producto.nombre | uppercase | lowercase | titlecase}}</h3>
+  <!-- <h3 style="text-transform: uppercase;">{{producto.nombre}}</h3>
+  <h3 [ngStyle]="{ 'text-transform': opcion }">{{producto.nombre}}</h3> -->
+  <p>{{producto.descripcion | slice:0:150}}...</p>
+  <!-- <p>Precio: {{producto.precio | currency:'EUR'}}</p> -->
+  <p>Precio: {{producto.precio | descuento:10 | currency:'EUR'}}</p>
+  <p>Fecha compra: {{producto.fechaCompra | date:'dd/MM/yyyy'}}</p>
+</div>
+
+<p>{{producto | json}}</p>
+<p>{{nombresProductos | async | json}}</p>
+
+<input type="text" (change)="addColor($event)">
+<ul>
+  <li *ngFor="let color of colores">{{color}}</li>
+</ul>
+
+<input type="text" [(ngModel)]="textoFiltro">
+<ul>
+  <li *ngFor="let color of colores | filtro:textoFiltro">{{color}}</li>
+</ul>
