@@ -1,0 +1,22 @@
+<h2>Validaciones de formularios</h2>
+
+<form [formGroup]="formularioLogin" (ngSubmit)="registrar()">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" formControlName="username">
+    <pre *ngIf="getErroresInput('username') !== null">{{getErroresInput('username') | json}}</pre>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" formControlName="password">
+    <pre *ngIf="getErroresInput('password') !== null">{{getErroresInput('password') | json}}</pre>
+    <!-- <app-error [errores]="getErroresInput('password') "></app-error> -->
+  </div>
+  <div>
+    <label for="repetirPassword">Repetir password:</label>
+    <input type="password" formControlName="repetirPassword">
+    <pre *ngIf="getErroresInput('repetirPassword') !== null">{{getErroresInput('repetirPassword') | json}}</pre>
+  </div>
+  <button type="submit">Registrate</button>
+  <!-- <button type="type" (click)="registrar()">Registrate</button> -->
+</form>

@@ -1,0 +1,8 @@
+<h2>Routing</h2>
+
+<nav>
+  <a routerLink="/usuarios">Usuarios</a>
+  <a [routerLink]="['/usuarios', 5, 'editar']">Editar usuario 5</a>
+</nav>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,9 @@
+<h3>Usuarios</h3>
+
+<div *ngFor="let usuario of usuarios">
+  <p>{{usuario.nombre}}</p>
+  <a [routerLink]="[usuario.id, 'info']">Ver + info</a>
+  <a [routerLink]="[usuario.id, 'editar']">Editar</a>
+</div>
+
+<router-outlet></router-outlet>
