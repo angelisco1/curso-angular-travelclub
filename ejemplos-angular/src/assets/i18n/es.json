@@ -1,0 +1,11 @@
+{
+  "PIPES": {
+    "title": "Filtros",
+    "price": "Precio",
+    "date": "Fecha compra",
+    "SELECT": {
+      "en": "Inglés 🇺🇸",
+      "es": "Español 🇪🇸"
+    }
+  }
+}

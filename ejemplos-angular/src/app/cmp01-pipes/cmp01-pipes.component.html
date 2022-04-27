@@ -1,4 +1,8 @@
-<h2>Pipes</h2>
+<h2>{{ 'PIPES.title' | translate }}</h2>
+
+<select (change)="cambiarLenguaje($event)">
+  <option *ngFor="let lang of lenguajes" [value]="lang" [selected]="lang === lenguajeSeleccionado">{{ 'PIPES.SELECT.' + lang | translate }}</option>
+</select>
 
 <button (click)="cuenta = cuenta + 1">{{cuenta}}</button>
 
@@ -8,8 +12,9 @@
   <h3 [ngStyle]="{ 'text-transform': opcion }">{{producto.nombre}}</h3> -->
   <p>{{producto.descripcion | slice:0:150}}...</p>
   <!-- <p>Precio: {{producto.precio | currency:'EUR'}}</p> -->
-  <p>Precio: {{producto.precio | descuento:10 | currency:'EUR'}}</p>
-  <p>Fecha compra: {{producto.fechaCompra | date:'dd/MM/yyyy'}}</p>
+  <p>{{ 'PIPES.price' | translate }}: {{producto.precio | descuento:10 | currency:'EUR':undefined:undefined:lenguajeSeleccionado}}</p>
+
+  <p>{{ 'PIPES.date' | translate }}: {{producto.fechaCompra | date:'mediumDate':undefined:lenguajeSeleccionado}}</p>
 </div>
 
 <p>{{producto | json}}</p>
@@ -24,3 +29,5 @@
 <ul>
   <li *ngFor="let color of colores | filtro:textoFiltro">{{color}}</li>
 </ul>
+
+<p>- {{ 'NO_EXISTE' | translate }}</p>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { DescuentoPipe } from './descuento.pipe';
 
 @Component({
@@ -28,7 +29,17 @@ export class Cmp01PipesComponent implements OnInit {
   colores = ['amarillo']
   textoFiltro = ''
 
-  constructor() { }
+  lenguajes: Array<string> = ['en', 'es']
+  lenguajeSeleccionado: string
+
+  constructor(private translateService: TranslateService) {
+    // ESTO IRIA EN EL app.component.ts
+    const cookies = document.cookie
+    const [key, lang] = cookies.split('=')
+    translateService.setDefaultLang(lang)
+
+    this.lenguajeSeleccionado = translateService.getDefaultLang()
+  }
 
   ngOnInit(): void {
     const nuevoPrecio = new DescuentoPipe().transform(this.producto.precio, 50)
@@ -39,6 +50,11 @@ export class Cmp01PipesComponent implements OnInit {
     const nuevoColor = event.target.value
     // this.colores.push(nuevoColor)
     this.colores = [...this.colores, nuevoColor]
+  }
+
+  cambiarLenguaje(event: any) {
+    this.lenguajeSeleccionado = event.target.value
+    this.translateService.use(this.lenguajeSeleccionado)
   }
 
 }

@@ -18,11 +18,12 @@ import { InfoUsuarioComponent } from './cmp05-routing/info-usuario/info-usuario.
 import { EditarUsuarioComponent } from './cmp05-routing/editar-usuario/editar-usuario.component';
 import { Error404Component } from './cmp05-routing/error404/error404.component';
 import { RoutingModule } from './cmp05-routing/app.routes';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MissingTranslationHandler, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { registerLocaleData } from '@angular/common';
 import localeEn from '@angular/common/locales/en'
 import localeEs from '@angular/common/locales/es'
+import { TraduccionInexistente } from './cmp01-pipes/traduccion-inexistente';
 
 export const httpLoaderFactory = (http: HttpClient) => {
   return new TranslateHttpLoader(http)
@@ -57,6 +58,10 @@ export const httpLoaderFactory = (http: HttpClient) => {
         provide: TranslateLoader,
         useFactory: httpLoaderFactory,
         deps: [HttpClient]
+      },
+      missingTranslationHandler: {
+        provide: MissingTranslationHandler,
+        useClass: TraduccionInexistente
       }
     })
   ],

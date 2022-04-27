@@ -1,0 +1,5 @@
+<div *ngIf="digimon$ | async as digimon">
+  <h2>{{digimon.name}}</h2>
+  <img [src]="digimon.img" alt="Imagen de {{digimon.name}}">
+  <p>Level: {{digimon.level}}</p>
+</div>

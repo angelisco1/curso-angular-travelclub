@@ -1,0 +1,11 @@
+{
+  "PIPES": {
+    "title": "Pipes",
+    "price": "Price",
+    "date": "Purchase date",
+    "SELECT": {
+      "en": "English 🇺🇸",
+      "es": "Spanish 🇪🇸"
+    }
+  }
+}
