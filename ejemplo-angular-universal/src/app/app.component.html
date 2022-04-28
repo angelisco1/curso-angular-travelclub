@@ -2,7 +2,18 @@
 
 <nav>
   <a [routerLink]="['/']">Inicio</a>
-  <a [routerLink]="['/login']">Login</a>
+
+  <a *ngIf="!isLoggedIn; else btnLogout" [routerLink]="['/login']">Login</a>
+
+  <ng-template #btnLogout>
+    <button type="button" (click)="logout()">Logout</button>
+  </ng-template>
+
+  <video src="assets/video.mp4" #video width="300"></video>
+  <button type="button" (click)="video.play()">Play</button>
+  <button type="button" (click)="video.pause()">Pause</button>
+  <input type="range" min="0" max="100" (input)="cambiarVolumen(video, $event)" />
+
 </nav>
 
 <router-outlet></router-outlet>

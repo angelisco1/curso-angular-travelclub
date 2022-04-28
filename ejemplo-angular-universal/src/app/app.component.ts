@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ejemplo-angular-universal';
+  isLoggedIn = false;
+
+  constructor(private auth: AuthService) {}
+
+  ngOnInit() {
+    // this.isLoggedIn = localStorage.getItem('jwt') ? true : false
+
+    this.auth.logueado$
+      .subscribe((logueado: boolean) => {
+        this.isLoggedIn = logueado
+      })
+  }
+
+  logout() {
+    localStorage.removeItem('jwt')
+    this.auth.logueado$.next(false)
+  }
+
+  cambiarVolumen(video: HTMLMediaElement, event: any) {
+    video.volume = Number(event.target.value) / 100
+  }
 }

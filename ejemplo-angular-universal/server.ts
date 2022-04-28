@@ -1,4 +1,5 @@
 import 'zone.js/dist/zone-node';
+import 'localstorage-polyfill'
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
@@ -8,11 +9,16 @@ import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
+global['localStorage'] = localStorage
+
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/ejemplo-angular-universal/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
+
+
+  server.use(express.json())
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({
@@ -24,7 +30,16 @@ export function app(): express.Express {
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
-  // server.post()
+  server.post('/api/login', (req, res) => {
+    // console.log({BODY: req.body})
+    const { password, username } = req.body
+
+    if (password === '1234' && username === 'angel') {
+      return res.json({ jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c' })
+    }
+
+    return res.status(401).json({ msg: 'Las credenciales son invalidas' })
+  })
   // server.put()
   // server.patch()
   // server.delete()

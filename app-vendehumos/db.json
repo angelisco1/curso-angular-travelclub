@@ -1,0 +1,32 @@
+{
+  "vendehumos": [
+    {
+      "id": 1,
+      "nombre": "Vendehumo 1",
+      "descripcion": "El inglés se enseña mal, soy el traductor de Obama...",
+      "avatar": "https://reqres.in/img/faces/8-image.jpg",
+      "votos": 2
+    },
+    {
+      "id": 2,
+      "nombre": "Vendehumo 2",
+      "descripcion": "Quieres ser tu propio jefe??",
+      "avatar": "https://reqres.in/img/faces/3-image.jpg",
+      "votos": 4
+    },
+    {
+      "id": 3,
+      "nombre": "Vendehumo 3",
+      "descripcion": "Hazte millonario con las cryptos...",
+      "avatar": "https://reqres.in/img/faces/7-image.jpg",
+      "votos": 0
+    },
+    {
+      "nombre": "Vendehumo 4",
+      "descripcion": "El inglés se enseña mal, soy el traductor de Obama...",
+      "avatar": "https://reqres.in/img/faces/4-image.jpg",
+      "votos": 1,
+      "id": 4
+    }
+  ]
+}
