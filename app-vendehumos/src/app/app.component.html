@@ -1,1 +1,6 @@
-<button class="btn btn-danger">Botón</button>
+<a routerLink="/">Inicio</a>
+<a routerLink="/nuevo-vendehumo">Añadir vendehumo</a>
+
+<div [@routeAnimations]="getRouteAnimationData()">
+  <router-outlet></router-outlet>
+</div>

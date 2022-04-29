@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Swal from 'sweetalert2';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -23,6 +24,7 @@ export class AppComponent {
   logout() {
     localStorage.removeItem('jwt')
     this.auth.logueado$.next(false)
+    Swal.fire("Logout")
   }
 
   cambiarVolumen(video: HTMLMediaElement, event: any) {

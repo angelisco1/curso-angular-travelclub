@@ -1,0 +1,8 @@
+<form [formGroup]="formulario" (ngSubmit)="crear()">
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" formControlName="nombre">
+  </div>
+
+  <button type="submit">Añadir</button>
+</form>
